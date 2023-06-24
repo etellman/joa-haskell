@@ -6,11 +6,15 @@ import Functors.FFunctor
 import Functors.GFunctor
 import Functors.HFunctor
 import Functors.KFunctor
+import Functors.PFunctor
+import Functors.QFunctor
+import Functors.RFunctor
 import Hedgehog as H
 import qualified Hedgehog.Gen as Gen
 import qualified Hedgehog.Range as Range
 import Test.Tasty
 import Test.Tasty.Hedgehog
+import Test.Tasty.HUnit
 
 prop_natural :: Property
 prop_natural = property $ do
@@ -86,5 +90,20 @@ tests =
     [ testProperty "natural" prop_natural,
       testProperty "isomorphism" prop_isomorphism,
       testProperty "horizontal composition 1" prop_horizontalComposition1,
-      testProperty "horizontal composition 2" prop_horizontalComposition2
+      testProperty "horizontal composition 2" prop_horizontalComposition2,
+      testCase "interchange" $ do
+        -- set up
+        let alpha = natural (intFs) :: SetMorphism (F Int) (G Int)
+            beta = natural (dest alpha) :: SetMorphism (G Int) (H Int)
+
+            pAlpha = lift alpha :: SetMorphism (P (F Int)) (P (G Int))
+            deltaH = natural $ dest qBeta :: SetMorphism (Q (H Int)) (R (H Int))
+
+            gammaG = natural $ dest pAlpha :: SetMorphism (P (G Int)) (Q (G Int))
+            gammaH = natural $ dest pBeta :: SetMorphism (P (H Int)) (Q (H Int))
+
+            pBeta = lift beta :: SetMorphism (P (G Int)) (P (H Int))
+            qBeta = lift beta :: SetMorphism (Q (G Int)) (Q (H Int))
+
+        deltaH <.> gammaH <.> pBeta <.> pAlpha @?= deltaH <.> qBeta <.> gammaG <.> pAlpha
     ]
