@@ -11,13 +11,14 @@ import Ch18.ChapterTest
 import Ch19.ChapterTest
 import Ch20.ChapterTest
 import Ch22.ChapterTest
+import Ch23.ChapterTest
 import Test.Tasty (defaultMain, testGroup)
 
 main :: IO ()
 main = do
   defaultMain
     ( testGroup
-        "Tests"
+        "The Joy of Abstraction"
         [ Ch05Test.unitTests,
           Ch06.Ch06Test.chapterTests,
           Ch08.Ch08Test.chapterTests,
@@ -30,6 +31,7 @@ main = do
           Ch18.ChapterTest.chapterTests,
           Ch19.ChapterTest.chapterTests,
           Ch20.ChapterTest.chapterTests,
-          Ch22.ChapterTest.chapterTests
+          Ch22.ChapterTest.chapterTests,
+          Ch23.ChapterTest.chapterTests
         ]
     )
