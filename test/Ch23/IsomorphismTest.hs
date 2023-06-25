@@ -1,29 +1,27 @@
 module Ch23.IsomorphismTest (tests) where
 
-import Assertions.Hedgehog
 import Ch12.SetCategory
-import Ch20.SetFunctor
-import Functors.FFunctor
-import Functors.GFunctor
 import Hedgehog as H
 import qualified Hedgehog.Gen as Gen
 import qualified Hedgehog.Range as Range
 import Test.Tasty
 import Test.Tasty.Hedgehog
 
-prop_isomorphism :: Property
-prop_isomorphism = property $ do
+prop_baseIsomorphism :: Property
+prop_baseIsomorphism = property $ do
   -- set up
-  n <- forAll $ Gen.int (Range.constant 2 1000)
+  n <- forAll $ Gen.int (Range.constant 1 200)
 
-  let f = lift $ multiply n :: SetMorphism (F Int) (F Int)
-      g = lift $ multiply n :: SetMorphism (G Int) (G Int)
-
-  alphaX <- assertValid $ natural (source f)
-  alphaY <- assertValid $ natural (dest f)
+  let f = multiply n
+      g = divide n
 
   -- exercise and verify
-  g <.> alphaX === alphaY <.> f
+  f <.> g === (identity $ multiplesOf n)
+  g <.> f === (identity $ integers)
 
 tests :: TestTree
-tests = testProperty "Isomorphism" prop_isomorphism
+tests =
+  testGroup
+    "Isomorphism"
+    [ testProperty "base isomorphism" prop_baseIsomorphism
+    ]

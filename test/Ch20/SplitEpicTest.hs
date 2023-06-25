@@ -9,10 +9,6 @@ import qualified Hedgehog.Gen as Gen
 import qualified Hedgehog.Range as Range
 import Test.Tasty
 import Test.Tasty.Hedgehog
-import Text.Printf
-
-add :: Int -> SetMorphism (F Int) (F Int)
-add n = SetMorphism intFs (printf "(+ %d)" n) (create . (+ n) . extract) intFs
 
 prop_splitEpic :: Property
 prop_splitEpic = property $ do
@@ -20,11 +16,13 @@ prop_splitEpic = property $ do
   x <- forAll $ Gen.int (Range.constant 1 100)
   y <- forAll $ Gen.element [x, -x]
 
+  let addF n = lift $ addn n
+
   cover 30 "split epic" $ x + y == 0
   cover 30 "not split epic" $ x + y /= 0
 
   -- exercise and verify
-  (x + y == 0) <==> (add x <.> add y == identity intFs)
+  (x + y == 0) <==> (addF x <.> addF y == identity intFs)
 
 tests :: TestTree
 tests = testProperty "Split Epic" prop_splitEpic

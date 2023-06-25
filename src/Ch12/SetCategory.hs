@@ -12,6 +12,9 @@ module Ch12.SetCategory
     finiteSet,
     multiplesOf,
     multiply,
+    divide,
+    add,
+    addn,
   )
 where
 
@@ -99,3 +102,12 @@ positiveIntegers = SetObject "Int" [1 .. 40] (> 0)
 
 multiply :: Int -> SetMorphism Int Int
 multiply n = SetMorphism integers (printf "(* %d)" n) (* n) (multiplesOf n)
+
+divide :: Int -> SetMorphism Int Int
+divide n = SetMorphism (multiplesOf n) (printf "(/ %d)" n) (flip div n) integers
+
+add :: SetObject Int -> SetObject Int -> Int -> SetMorphism Int Int
+add s d n = SetMorphism s (printf "(+ %d)" n) (+ n) d
+
+addn :: Int -> SetMorphism Int Int
+addn = add integers integers
