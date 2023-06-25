@@ -51,7 +51,7 @@ prop_homSet = property $ do
   -- set up
   (XCone s t f g) <- forAll genCone
 
-  let cxa = finiteSet "Cxa" [s, g <.> t]
+  let cxa = finiteSet "Cxa" [s, g <.> t] :: SetObject (SetMorphism Int Int)
       cxb = finiteSet "Cxb" [t, f <.> s]
 
       cxaToCxb = SetMorphism cxa "f . _" (f <.>) cxb
