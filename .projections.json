@@ -1,0 +1,11 @@
+{
+  "src/*.hs": { 
+    "type": "source",
+    "alternate": "test/{}Test.hs" 
+  },
+  "test/*Test.hs": { 
+    "type": "test",
+    "alternate": "src/{}.hs" 
+  }
+}
+
