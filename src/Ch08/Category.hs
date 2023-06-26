@@ -2,10 +2,14 @@ module Ch08.Category
   ( Morphism (..),
     Morphisms (..),
     Objects (..),
+    SumLabel (..),
     isId,
     withdest,
+    sumIdentity,
   )
 where
+
+import Data.Semigroup
 
 data Morphism o l = Morphism
   { source :: o,
@@ -46,3 +50,11 @@ withdest xs x = filter ((== x) . dest) xs
 -- | determines whether a morphism is an identity
 isId :: (Eq a) => Morphism a b -> Bool
 isId (Morphism s _ d) = s == d
+
+newtype SumLabel = SumLabel {sumLabel :: (Sum Int)} deriving (Eq, Show)
+
+instance Semigroup SumLabel where
+  (SumLabel x) <> (SumLabel y) = SumLabel (x <> y)
+
+sumIdentity :: o -> Morphism o SumLabel
+sumIdentity x = Morphism x (SumLabel 0) x
