@@ -23,6 +23,7 @@ dependencies:
 - base >= 4.7 && < 5
 - HUnit
 - containers
+- Unique >= 0.4.7.9
 
 ghc-options:
 - -Wall

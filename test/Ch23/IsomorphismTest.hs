@@ -12,15 +12,15 @@ tests =
   testGroup
     "Isomorphism"
     [ testCase "base isomorphism 2" $ do
-        let (XCone2 s t f g) = xcone2
+        let (XCone2 s t f g _) = xcone2
 
         f C.<.> g @?= C.sumIdentity B
         g C.<.> f @?= C.sumIdentity A
         g C.<.> f C.<.> s @?= s
         f C.<.> g C.<.> t @?= t,
       --
-      testCase "hom set 2" $ do
-        let (XCone2 s t f g) = xcone2
+      testCase "hom set" $ do
+        let (XCone2 s t f g _) = xcone2
 
         let cxa = finiteSet "Cxa" [s, g C.<.> t]
             cxb = finiteSet "Cxb" [t, f C.<.> s]
@@ -40,7 +40,7 @@ tests =
         t C.<.> f @?= s
         s C.<.> g @?= t,
       --
-      testCase "hom set dual 2" $ do
+      testCase "hom set dual" $ do
         let (XConeDual2 s t f g) = xconeDual2
 
         let cax = finiteSet "Cxa" [s, t C.<.> f]
