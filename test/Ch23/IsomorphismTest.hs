@@ -2,6 +2,7 @@ module Ch23.IsomorphismTest (tests) where
 
 import qualified Ch08.Category as C
 import Ch12.SetCategory
+import Ch23.RepresentableFunctor
 import Ch23.XCone
 import Ch23.XConeDual
 import Test.Tasty
@@ -20,17 +21,14 @@ tests =
         f C.<.> g C.<.> t @?= t,
       --
       testCase "hom set" $ do
-        let (XCone2 s t f g _) = xcone2
+        let (XCone2 _ _ f g _) = xcone2
 
-        let cxa = finiteSet "Cxa" [s, g C.<.> t]
-            cxb = finiteSet "Cxb" [t, f C.<.> s]
-
-            cxaToCxb = SetMorphism cxa "f . _" (f C.<.>) cxb
-            cxbToCxa = SetMorphism cxb "g . _" (g C.<.>) cxa
+        let f' = liftR X f
+            g' = liftR X g
 
         -- exercise and verify
-        cxbToCxa <.> cxaToCxb @?= (identity cxa)
-        cxaToCxb <.> cxbToCxa @?= (identity cxb),
+        f' <.> g' @?= (identity $ source f')
+        g' <.> f' @?= (identity $ source g'),
       --
       testCase "dual isomorphism" $ do
         let (XConeDual2 s t f g) = xconeDual2

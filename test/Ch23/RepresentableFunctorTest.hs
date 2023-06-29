@@ -13,13 +13,13 @@ tests =
     "Representable Functors"
     [ testCase "identity 2" $ do
         let (XCone2 _ _ f g _) = xcone2
-            cxaId = liftR X (C.sumIdentity A)
             f' = liftR X f
             g' = liftR X g
+            idA = identity $ source f'
 
         -- exercise and verify
-        f' <.> cxaId @?= f'
-        cxaId <.> g' @?= g',
+        f' <.> idA @?= f'
+        idA <.> g' @?= g',
       --
       testCase "composition" $ do
         let (XCone2 _ _ f _ h) = xcone2
