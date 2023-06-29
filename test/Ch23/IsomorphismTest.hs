@@ -27,11 +27,11 @@ tests =
             g' = liftH X g
 
         -- exercise and verify
-        f' <.> g' @?= (identity $ source f')
-        g' <.> f' @?= (identity $ source g'),
+        f' <.> g' @?= (identity $ source g')
+        g' <.> f' @?= (identity $ source f'),
       --
       testCase "dual isomorphism" $ do
-        let (XConeDual2 s t f g) = xconeDual2
+        let (XConeDual2 s t f g _) = xconeDual2
 
         f C.<.> g @?= C.sumIdentity B'
         g C.<.> f @?= C.sumIdentity A'
@@ -39,15 +39,12 @@ tests =
         s C.<.> g @?= t,
       --
       testCase "hom set dual" $ do
-        let (XConeDual2 s t f g) = xconeDual2
+        let (XConeDual2 _ _ f g _) = xconeDual2
 
-        let cax = finiteSet "Cxa" [s, t C.<.> f]
-            cbx = finiteSet "Cxb" [t, s C.<.> g]
-
-            caxToCbx = SetMorphism cax "_ . g" (C.<.> g) cbx
-            cbxToCax = SetMorphism cbx "_ . f" (C.<.> f) cax
+        let f' = liftH' X' f
+            g' = liftH' X' g
 
         -- exercise and verify
-        cbxToCax <.> caxToCbx @?= (identity cax)
-        caxToCbx <.> cbxToCax @?= (identity cbx)
+        f' <.> g' @?= (identity $ source g')
+        g' <.> f' @?= (identity $ source f')
     ]
