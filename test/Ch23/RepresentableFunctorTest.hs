@@ -13,8 +13,8 @@ tests =
     "Representable Functors"
     [ testCase "identity 2" $ do
         let (XCone2 _ _ f g _) = xcone2
-            f' = liftR X f
-            g' = liftR X g
+            f' = liftH X f
+            g' = liftH X g
             idA = identity $ source f'
 
         -- exercise and verify
@@ -23,9 +23,9 @@ tests =
       --
       testCase "composition" $ do
         let (XCone2 _ _ f _ h) = xcone2
-            f' = liftR X f
-            h' = liftR X h
+            f' = liftH X f
+            h' = liftH X h
 
         -- exercise and verify
-        h' <.> f' @?= liftR X (h C.<.> f)
+        h' <.> f' @?= liftH X (h C.<.> f)
     ]

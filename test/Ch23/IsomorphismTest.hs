@@ -23,8 +23,8 @@ tests =
       testCase "hom set" $ do
         let (XCone2 _ _ f g _) = xcone2
 
-        let f' = liftR X f
-            g' = liftR X g
+        let f' = liftH X f
+            g' = liftH X g
 
         -- exercise and verify
         f' <.> g' @?= (identity $ source f')
