@@ -4,7 +4,10 @@ module Ch08.Category
     Objects (..),
     SumLabel (..),
     isId,
+    fromTo,
+    findIn,
     sumIdentity,
+    opposite,
   )
 where
 
@@ -45,6 +48,17 @@ class (Eq o, Objects o) => Morphisms o l where
 -- | the morphisms with dest x
 withDest :: (Eq a) => [Morphism a b] -> a -> [Morphism a b]
 withDest xs x = filter ((== x) . dest) xs
+
+opposite :: (Morphisms o l) => [Morphism o l]
+opposite =
+  let flipMorphism (Morphism s l d) = Morphism d l s
+   in map flipMorphism morphisms
+
+fromTo :: (Morphisms o l) => [Morphism o l] -> o -> o -> [Morphism o l]
+fromTo ms s d = filter (\x -> source x == s && dest x == d) ms
+
+findIn :: (Morphisms o l) => [Morphism o l] -> o -> o -> Morphism o l
+findIn ms x y = head $ fromTo ms x y
 
 -- | determines whether a morphism is an identity
 isId :: (Eq a) => Morphism a b -> Bool

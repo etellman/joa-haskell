@@ -4,16 +4,24 @@ import qualified Ch08.Category as C
 import Ch12.SetCategory
 import Ch23.RepresentableFunctor
 import Ch23.XCone
-import Ch23.XConeDual
 import Test.Tasty
 import Test.Tasty.HUnit
+
+find :: XConeObject -> XConeObject -> C.Morphism XConeObject SumLabel
+find = C.findIn C.morphisms
+
+find' :: XConeObject -> XConeObject -> C.Morphism XConeObject SumLabel
+find' = C.findIn C.opposite
 
 tests :: TestTree
 tests =
   testGroup
     "Isomorphism"
     [ testCase "base isomorphism 2" $ do
-        let (XCone2 s t f g _) = xcone2
+        let f = find A B
+            g = find B A
+            s = find X A
+            t = find X B
 
         f C.<.> g @?= C.sumIdentity B
         g C.<.> f @?= C.sumIdentity A
@@ -21,7 +29,8 @@ tests =
         f C.<.> g C.<.> t @?= t,
       --
       testCase "hom set" $ do
-        let (XCone2 _ _ f g _) = xcone2
+        let f = find A B
+            g = find B A
 
         let f' = liftH X f
             g' = liftH X g
@@ -31,18 +40,22 @@ tests =
         g' <.> f' @?= (identity $ source f'),
       --
       testCase "dual isomorphism" $ do
-        let (XConeDual2 s t f g _) = xconeDual2
+        let f = find' B A
+            g = find' A B
+            s = find' A X
+            t = find' B X
 
-        f C.<.> g @?= C.sumIdentity B'
-        g C.<.> f @?= C.sumIdentity A'
-        t C.<.> f @?= s
-        s C.<.> g @?= t,
+        f C.<.> g @?= C.sumIdentity A
+        g C.<.> f @?= C.sumIdentity B
+        t C.<.> g @?= s
+        s C.<.> f @?= t,
       --
       testCase "hom set dual" $ do
-        let (XConeDual2 _ _ f g _) = xconeDual2
+        let f = find' A B
+            g = find' B A
 
-        let f' = liftH' X' f
-            g' = liftH' X' g
+        let f' = liftH' X f
+            g' = liftH' X g
 
         -- exercise and verify
         f' <.> g' @?= (identity $ source g')
