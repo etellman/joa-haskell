@@ -10,8 +10,8 @@ import Test.Tasty.HUnit
 find :: XConeObject -> XConeObject -> C.Morphism XConeObject SumLabel
 find = C.findIn C.morphisms
 
-find' :: XConeObject -> XConeObject -> C.Morphism XConeObject SumLabel
-find' = C.findIn C.opposite
+findOp :: XConeObject -> XConeObject -> C.Morphism XConeObject SumLabel
+findOp = C.findIn C.opposite
 
 tests :: TestTree
 tests =
@@ -47,7 +47,7 @@ tests =
       testGroup
         "Hx dual"
         [ testCase "source" $ do
-            let f = find' B A
+            let f = findOp B A
                 f' = liftH X f
 
             -- exercise and verify
@@ -55,8 +55,8 @@ tests =
             assertBool "destination" $ (not . null . samples . dest) f',
           --
           testCase "identity" $ do
-            let f' = liftH' X (find' B A)
-                g' = liftH' X (find' A B)
+            let f' = liftH' X (findOp B A)
+                g' = liftH' X (findOp A B)
                 idA = identity $ source g'
 
             -- exercise and verify
@@ -64,9 +64,9 @@ tests =
             idA <.> g' @?= g',
           --
           testCase "composition" $ do
-            let f = find' B A
+            let f = findOp B A
                 f' = liftH' X f
-                h = find' C B
+                h = findOp C B
                 h' = liftH' X h
 
              -- exercise and verify

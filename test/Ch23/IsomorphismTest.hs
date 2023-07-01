@@ -10,8 +10,8 @@ import Test.Tasty.HUnit
 find :: XConeObject -> XConeObject -> C.Morphism XConeObject SumLabel
 find = C.findIn C.morphisms
 
-find' :: XConeObject -> XConeObject -> C.Morphism XConeObject SumLabel
-find' = C.findIn C.opposite
+findOp :: XConeObject -> XConeObject -> C.Morphism XConeObject SumLabel
+findOp = C.findIn C.opposite
 
 tests :: TestTree
 tests =
@@ -40,10 +40,10 @@ tests =
         g' <.> f' @?= (identity $ source f'),
       --
       testCase "dual isomorphism" $ do
-        let f = find' B A
-            g = find' A B
-            s = find' A X
-            t = find' B X
+        let f = findOp B A
+            g = findOp A B
+            s = findOp A X
+            t = findOp B X
 
         f C.<.> g @?= C.sumIdentity A
         g C.<.> f @?= C.sumIdentity B
@@ -51,8 +51,8 @@ tests =
         s C.<.> f @?= t,
       --
       testCase "hom set dual" $ do
-        let f = find' A B
-            g = find' B A
+        let f = findOp A B
+            g = findOp B A
 
         let f' = liftH' X f
             g' = liftH' X g
