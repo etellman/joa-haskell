@@ -1,5 +1,5 @@
 module Ch23.Yoneda
-  (
+  ( naturalH,
   )
 where
 

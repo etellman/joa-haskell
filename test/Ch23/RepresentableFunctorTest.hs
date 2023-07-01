@@ -7,12 +7,6 @@ import Ch23.XCone
 import Test.Tasty
 import Test.Tasty.HUnit
 
-find :: XConeObject -> XConeObject -> C.Morphism XConeObject SumLabel
-find = C.findIn C.morphisms
-
-findOp :: XConeObject -> XConeObject -> C.Morphism XConeObject SumLabel
-findOp = C.findIn C.opposite
-
 tests :: TestTree
 tests =
   testGroup
@@ -47,7 +41,7 @@ tests =
       testGroup
         "Hx dual"
         [ testCase "source" $ do
-            let f = findOp B A
+            let f = findOpposite B A
                 f' = liftH X f
 
             -- exercise and verify
@@ -55,8 +49,8 @@ tests =
             assertBool "destination" $ (not . null . samples . dest) f',
           --
           testCase "identity" $ do
-            let f' = liftH' X (findOp B A)
-                g' = liftH' X (findOp A B)
+            let f' = liftH' X (findOpposite B A)
+                g' = liftH' X (findOpposite A B)
                 idA = identity $ source g'
 
             -- exercise and verify
@@ -64,12 +58,12 @@ tests =
             idA <.> g' @?= g',
           --
           testCase "composition" $ do
-            let f = findOp B A
+            let f = findOpposite B A
                 f' = liftH' X f
-                h = findOp C B
+                h = findOpposite C B
                 h' = liftH' X h
 
-             -- exercise and verify
+            -- exercise and verify
             h' <.> f' @?= liftH' X (f C.<.> h)
         ]
     ]
