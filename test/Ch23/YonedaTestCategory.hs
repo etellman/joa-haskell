@@ -12,7 +12,6 @@ data YonedaObject = A | B | X | Y deriving (Eq, Show)
 instance Objects YonedaObject where
   objects = [A, B, X, Y]
 
--- | The morphisms must commute in the opposite category:
 instance Morphisms YonedaObject SumLabel where
   morphisms =
     [ Morphism A (SumLabel 1) B,
