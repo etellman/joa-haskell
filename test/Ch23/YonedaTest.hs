@@ -1,10 +1,9 @@
 module Ch23.YonedaTest (tests) where
 
-import qualified Ch08.Category as C
 import Ch12.SetCategory
 import Ch23.RepresentableFunctor
-import Ch23.XCone
 import Ch23.Yoneda
+import Ch23.YonedaTestCategory
 import Test.Tasty
 import Test.Tasty.HUnit
 
@@ -12,12 +11,24 @@ tests :: TestTree
 tests =
   testGroup
     "Yoneda Lemma"
-    [ testCase "natural transformation" $ do
-        let f = find A B
-            f' = liftH X f
-            h = find B C
-            h' = liftH X h
+    [ testCase "natural transformation 1" $ do
+        -- set up
+        let f = find X Y
 
-        -- exercise and verify
-        h' <.> f' @?= liftH X (h C.<.> f)
+        -- exercise
+        let hfa = naturalH f (homSet' A X)
+
+        -- verify
+        source hfa @?= homSet' A X
+        dest hfa @?= homSet' A Y,
+      testCase "natural transformation" $ do
+        let f = find X Y
+            p = find A B
+            homXp = liftH' X p
+            natFa = naturalH f (homSet' A X)
+
+            homYp = liftH' Y p
+            natFb = naturalH f (homSet' B X)
+
+        natFa <.> homXp @?= homYp <.> natFb
     ]

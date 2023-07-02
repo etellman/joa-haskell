@@ -41,7 +41,7 @@ tests =
       testGroup
         "Hx dual"
         [ testCase "source" $ do
-            let f = findOpposite B A
+            let f = find A B
                 f' = liftH X f
 
             -- exercise and verify
@@ -49,21 +49,30 @@ tests =
             assertBool "destination" $ (not . null . samples . dest) f',
           --
           testCase "identity" $ do
-            let f' = liftH' X (findOpposite B A)
-                g' = liftH' X (findOpposite A B)
-                idA = identity $ source g'
+            let f' = liftH' X (find A B)
+                g' = liftH' X (find B A)
+                idB = identity $ source f'
 
             -- exercise and verify
-            f' <.> idA @?= f'
-            idA <.> g' @?= g',
+            source f' @?= homSet' B X
+            source g' @?= homSet' A X
+
+            f' <.> idB @?= f'
+            idB <.> g' @?= g',
           --
           testCase "composition" $ do
-            let f = findOpposite B A
+            let f = find A B
                 f' = liftH' X f
-                h = findOpposite C B
+                h = find B C
                 h' = liftH' X h
 
             -- exercise and verify
-            h' <.> f' @?= liftH' X (f C.<.> h)
+            source f' @?= homSet' B X
+            dest f' @?= homSet' A X
+
+            source h' @?= homSet' C X
+            dest h' @?= homSet' B X
+
+            f' <.> h' @?= liftH' X (h C.<.> f)
         ]
     ]

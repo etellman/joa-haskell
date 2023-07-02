@@ -37,7 +37,7 @@ finiteSet nm xs = SetObject nm xs (flip elem xs)
 instance Eq (SetObject a) where
   SetObject _ as aok == SetObject _ bs bok = (all aok bs) && (all bok as)
 
-instance Show (SetObject a) where
+instance (Show a) => Show (SetObject a) where
   show (SetObject name _ _) = name
 
 data SetMorphism a b = SetMorphism
@@ -72,7 +72,7 @@ validate m@(SetMorphism s _ f d) =
 (<.>) :: SetMorphism b c -> SetMorphism a b -> SetMorphism a c
 (SetMorphism sf nf opf df) <.> (SetMorphism sg ng opg dg)
   | dg /= sf = undefined
-  | otherwise = SetMorphism sg (printf "%s . %s" nf ng) (opf . opg) df
+  | otherwise = SetMorphism sg (printf "(%s) . (%s)" nf ng) (opf . opg) df
 
 booleans :: SetObject Bool
 booleans = SetObject "Bool" [False, True] (const True)

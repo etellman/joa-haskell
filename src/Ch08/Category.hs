@@ -3,6 +3,7 @@ module Ch08.Category
     Morphisms (..),
     Objects (..),
     SumLabel (..),
+    StringLabel (..),
     isId,
     fromTo,
     findIn,
@@ -64,10 +65,21 @@ findIn ms x y = head $ fromTo ms x y
 isId :: (Eq a) => Morphism a b -> Bool
 isId (Morphism s _ d) = s == d
 
-newtype SumLabel = SumLabel {sumLabel :: (Sum Int)} deriving (Eq, Show)
+newtype SumLabel = SumLabel {sumLabel :: (Sum Int)} deriving (Eq)
+
+instance Show SumLabel where
+  show (SumLabel (Sum x)) = show x
 
 instance Semigroup SumLabel where
   (SumLabel x) <> (SumLabel y) = SumLabel (x <> y)
+
+newtype StringLabel = StringLabel {stringLabel :: String} deriving (Eq)
+
+instance Show StringLabel where
+  show (StringLabel x) = x
+
+instance Semigroup StringLabel where
+  (StringLabel x) <> (StringLabel y) = StringLabel (x <> y)
 
 sumIdentity :: o -> Morphism o SumLabel
 sumIdentity x = Morphism x (SumLabel 0) x
