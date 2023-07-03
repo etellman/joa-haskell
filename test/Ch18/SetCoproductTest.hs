@@ -1,7 +1,7 @@
 module Ch18.SetCoproductTest (tests) where
 
 import Assertions.HUnit
-import Ch12.SetCategory
+import Lib.SetCategory
 import Ch18.SetCoproduct
 import Test.Tasty
 import Test.Tasty.HUnit

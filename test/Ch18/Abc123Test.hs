@@ -1,6 +1,6 @@
 module Ch18.Abc123Test (tests) where
 
-import Ch12.SetCategory
+import Lib.SetCategory
 import Ch18.Product
 import Test.Tasty
 import Test.Tasty.HUnit

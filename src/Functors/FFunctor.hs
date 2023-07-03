@@ -4,7 +4,7 @@ module Functors.FFunctor
   )
 where
 
-import Ch12.SetCategory
+import Lib.SetCategory
 import Ch20.SetFunctor
 
 data F a = F a deriving (Show, Eq)

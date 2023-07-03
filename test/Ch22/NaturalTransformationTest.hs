@@ -1,7 +1,7 @@
 module Ch22.NaturalTransformationTest (tests) where
 
 import Assertions.Hedgehog
-import Ch12.SetCategory
+import Lib.SetCategory
 import Ch20.SetFunctor
 import Functors.FFunctor
 import Functors.GFunctor

@@ -5,7 +5,7 @@ module Assertions.Hedgehog
   )
 where
 
-import Ch12.SetCategory
+import Lib.SetCategory
 import Hedgehog
 
 -- | Verifies that a morphism can transform all the samples from the input set to values

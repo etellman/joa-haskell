@@ -5,7 +5,7 @@ module Ch20.SetFunctor
   )
 where
 
-import Ch12.SetCategory
+import Lib.SetCategory
 import Text.Printf
 
 class (Functor m) => SetFunctor m where

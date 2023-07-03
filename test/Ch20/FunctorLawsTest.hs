@@ -1,6 +1,6 @@
 module Ch20.FunctorLawsTest (tests) where
 
-import Ch12.SetCategory
+import Lib.SetCategory
 import Ch20.SetFunctor
 import Functors.FFunctor
 import Hedgehog as H

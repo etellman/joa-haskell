@@ -4,7 +4,7 @@ module Ch23.Yoneda
 where
 
 import Lib.Category
-import qualified Ch12.SetCategory as SC
+import qualified Lib.SetCategory as SC
 import Text.Printf
 
 naturalH ::

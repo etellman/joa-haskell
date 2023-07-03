@@ -1,7 +1,7 @@
 module Ch16.ChapterTest (chapterTests) where
 
 import Assertions.HUnit
-import Ch12.SetCategory
+import Lib.SetCategory
 import Data.Void
 import Test.Tasty
 import Test.Tasty.HUnit

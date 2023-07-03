@@ -2,7 +2,7 @@ module Ch19.SetPullbackTest (tests) where
 
 import qualified Assertions.HUnit as UA
 import qualified Assertions.Hedgehog as HA
-import Ch12.SetCategory
+import Lib.SetCategory
 import Ch18.Product
 import Ch19.SetPullback
 import Hedgehog as H

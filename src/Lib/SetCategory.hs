@@ -1,4 +1,4 @@
-module Ch12.SetCategory
+module Lib.SetCategory
   ( SetMorphism (..),
     SetObject (..),
     (<.>),

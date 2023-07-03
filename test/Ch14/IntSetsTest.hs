@@ -1,6 +1,6 @@
 module Ch14.IntSetsTest (unitTests) where
 
-import Ch12.SetCategory
+import Lib.SetCategory
 import Ch14.IntSets
 import Test.Tasty
 import Test.Tasty.HUnit

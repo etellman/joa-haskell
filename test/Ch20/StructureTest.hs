@@ -1,6 +1,6 @@
 module Ch20.StructureTest (tests) where
 
-import Ch12.SetCategory
+import Lib.SetCategory
 import Test.Tasty
 import Test.Tasty.HUnit
 

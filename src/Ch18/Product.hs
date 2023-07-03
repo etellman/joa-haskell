@@ -4,7 +4,7 @@ module Ch18.Product
   )
 where
 
-import Ch12.SetCategory
+import Lib.SetCategory
 import Text.Printf
 
 productMorphism ::

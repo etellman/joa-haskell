@@ -1,6 +1,6 @@
-module Ch12.SetCategoryTest (unitTests) where
+module Lib.SetCategoryTest (unitTests) where
 
-import Ch12.SetCategory
+import Lib.SetCategory
 import Test.Tasty
 import Test.Tasty.HUnit
 

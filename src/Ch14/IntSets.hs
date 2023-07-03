@@ -8,7 +8,7 @@ module Ch14.IntSets
   )
 where
 
-import Ch12.SetCategory
+import Lib.SetCategory
 
 -- This is a category with 3 set objects: all integers, even integers and multiples of 4.
 -- The objects are all isomorphic with each other since you can go to/from any two objects by

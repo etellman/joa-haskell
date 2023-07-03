@@ -1,6 +1,6 @@
 module Ch19.SetPullback (pullbackSet) where
 
-import Ch12.SetCategory
+import Lib.SetCategory
 import Control.Monad
 
 -- import Text.Printf

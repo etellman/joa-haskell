@@ -5,7 +5,7 @@ module Ch18.SetCoproduct
   )
 where
 
-import Ch12.SetCategory
+import Lib.SetCategory
 import Text.Printf
 
 data CoproductValue a b = A a | B b deriving (Show, Eq)

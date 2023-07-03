@@ -1,7 +1,7 @@
 module Ch23.RepresentableFunctorTest (tests) where
 
 import qualified Lib.Category as C
-import Ch12.SetCategory
+import Lib.SetCategory
 import Ch23.RepresentableFunctor
 import Ch23.XCone
 import Test.Tasty
