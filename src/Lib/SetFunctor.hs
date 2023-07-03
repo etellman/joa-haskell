@@ -1,4 +1,4 @@
-module Ch20.SetFunctor
+module Lib.SetFunctor
   ( natural,
     lift,
     SetFunctor (..),

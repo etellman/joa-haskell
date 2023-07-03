@@ -1,7 +1,7 @@
 module Ch20.FunctorLawsTest (tests) where
 
 import Lib.SetCategory
-import Ch20.SetFunctor
+import Lib.SetFunctor
 import Functors.FFunctor
 import Hedgehog as H
 import qualified Hedgehog.Gen as Gen

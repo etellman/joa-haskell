@@ -1,7 +1,7 @@
 module Ch22.SetFunctorCategoryTest (tests) where
 
 import Lib.SetCategory
-import Ch20.SetFunctor
+import Lib.SetFunctor
 import Functors.FFunctor
 import Functors.GFunctor
 import Functors.HFunctor

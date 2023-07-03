@@ -1,6 +1,6 @@
 module Functors.RFunctor (R (..)) where
 
-import Ch20.SetFunctor
+import Lib.SetFunctor
 
 data R a = R a deriving (Show, Eq)
 

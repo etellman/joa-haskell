@@ -1,6 +1,6 @@
 module Functors.PFunctor (P (..)) where
 
-import Ch20.SetFunctor
+import Lib.SetFunctor
 
 data P a = P a deriving (Show, Eq)
 

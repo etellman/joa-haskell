@@ -2,7 +2,7 @@ module Ch20.SplitEpicTest (tests) where
 
 import Assertions.Hedgehog
 import Lib.SetCategory
-import Ch20.SetFunctor
+import Lib.SetFunctor
 import Functors.FFunctor
 import Hedgehog as H
 import qualified Hedgehog.Gen as Gen

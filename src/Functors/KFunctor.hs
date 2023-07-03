@@ -1,6 +1,6 @@
 module Functors.KFunctor (K (..)) where
 
-import Ch20.SetFunctor
+import Lib.SetFunctor
 
 data K a = K a deriving (Show, Eq)
 
