@@ -15,6 +15,6 @@ naturalH ::
 naturalH f x =
   let transform = (f <.>)
       name = (printf "naturalH %s %s" (show x) ((show . mlabel) f))
-      naturalObj (SC.SetObject nm fs ok) =
+      naturalObj (SC.SetObject _ fs _) =
         SC.finiteSet (printf "%s" name) (fmap transform fs)
    in SC.SetMorphism x name transform (naturalObj x)
