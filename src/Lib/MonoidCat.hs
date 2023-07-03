@@ -1,4 +1,4 @@
-module Ch11.MonoidCat (MonoidObject (..)) where
+module Lib.MonoidCat (MonoidObject (..)) where
 
 import Lib.Category
 

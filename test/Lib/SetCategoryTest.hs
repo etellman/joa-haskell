@@ -1,4 +1,4 @@
-module Lib.SetCategoryTest (unitTests) where
+module Lib.SetCategoryTest (tests) where
 
 import Lib.SetCategory
 import Test.Tasty
@@ -19,8 +19,8 @@ mtimes2 = SetMorphism integers "(* 2)" (* 2) integers
 mplus1 :: SetMorphism Int Int
 mplus1 = SetMorphism integers "(+ 1)" (+ 1) integers
 
-unitTests :: TestTree
-unitTests =
+tests :: TestTree
+tests =
   testGroup
     "Set Category"
     [ testGroup

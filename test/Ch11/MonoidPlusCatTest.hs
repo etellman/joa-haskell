@@ -1,7 +1,7 @@
 module Ch11.MonoidPlusCatTest (unitTests) where
 
 import Lib.Category
-import Ch11.MonoidCat
+import Lib.MonoidCat
 import Ch11.MonoidPlusCat
 import Hedgehog
 import qualified Hedgehog.Gen as Gen
