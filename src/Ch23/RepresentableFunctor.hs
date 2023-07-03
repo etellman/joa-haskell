@@ -6,7 +6,7 @@ module Ch23.RepresentableFunctor
   )
 where
 
-import Ch08.Category
+import Lib.Category
 import qualified Ch12.SetCategory as SC
 import Text.Printf
 

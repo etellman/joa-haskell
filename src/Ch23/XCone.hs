@@ -5,7 +5,7 @@ module Ch23.XCone
   )
 where
 
-import Ch08.Category
+import Lib.Category
 
 data XConeObject = A | B | C | X deriving (Eq, Show)
 

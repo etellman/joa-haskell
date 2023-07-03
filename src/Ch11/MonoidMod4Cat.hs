@@ -4,7 +4,7 @@ module Ch11.MonoidMod4Cat
   )
 where
 
-import Ch08.Category
+import Lib.Category
 import Ch11.MonoidCat
 
 newtype Mod4Label = Mod4Label {m4label :: Int} deriving (Eq, Ord, Show)

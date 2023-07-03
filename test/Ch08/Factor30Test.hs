@@ -1,6 +1,6 @@
 module Ch08.Factor30Test (unitTests) where
 
-import Ch08.Category
+import Lib.Category
 import Ch08.Factor30
 import Hedgehog
 import qualified Hedgehog.Gen as Gen

@@ -4,7 +4,7 @@ module Ch08.Factor30
   )
 where
 
-import Ch08.Category
+import Lib.Category
 
 -- | All the divisors of a number
 divisors :: Int -> [Int]

@@ -1,7 +1,7 @@
 module Ch20.PosetFunctorTest (tests) where
 
 import Assertions.Hedgehog
-import Ch08.Category
+import Lib.Category
 import Ch20.PosetFunctor
 import Hedgehog as H
 import qualified Hedgehog.Gen as Gen

@@ -1,6 +1,6 @@
 module Ch14.AbcCategoryTest (unitTests) where
 
-import Ch08.Category
+import Lib.Category
 import Ch14.AbcCategory
 import Test.Tasty
 import Test.Tasty.HUnit

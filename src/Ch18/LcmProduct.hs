@@ -4,7 +4,7 @@ module Ch18.LcmProduct
   )
 where
 
-import Ch08.Category
+import Lib.Category
 import Ch08.Factor30
 import Data.Function
 import Data.List (minimumBy)

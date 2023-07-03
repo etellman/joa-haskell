@@ -9,7 +9,7 @@ module Ch20.PosetFunctor
   )
 where
 
-import Ch08.Category
+import Lib.Category
 
 -- pp. 293 - 294
 

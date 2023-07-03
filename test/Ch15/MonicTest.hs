@@ -1,6 +1,6 @@
 module Ch15.MonicTest (unitTests) where
 
-import Ch08.Category
+import Lib.Category
 import Ch11.MonoidCat
 import Ch11.MonoidPlusCat
 import Hedgehog as H

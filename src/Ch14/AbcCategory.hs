@@ -4,7 +4,7 @@ module Ch14.AbcCategory
   )
 where
 
-import Ch08.Category
+import Lib.Category
 import Text.Printf
 
 data AbcObject = A | B | C deriving (Show, Eq)

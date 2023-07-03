@@ -5,7 +5,7 @@ module Ch11.MonoidPlusCat
   )
 where
 
-import Ch08.Category
+import Lib.Category
 import Ch11.MonoidCat
 
 newtype PlusLabel = PlusLabel {plabel :: Int} deriving (Eq, Ord, Show)

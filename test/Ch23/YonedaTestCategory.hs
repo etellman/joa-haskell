@@ -5,7 +5,7 @@ module Ch23.YonedaTestCategory
   )
 where
 
-import Ch08.Category
+import Lib.Category
 
 data YonedaObject = A | B | X | Y deriving (Eq, Show)
 

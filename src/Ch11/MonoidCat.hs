@@ -1,6 +1,6 @@
 module Ch11.MonoidCat (MonoidObject (..)) where
 
-import Ch08.Category
+import Lib.Category
 
 data MonoidObject = MonoidObject deriving (Eq, Show)
 

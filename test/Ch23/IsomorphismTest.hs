@@ -1,6 +1,6 @@
 module Ch23.IsomorphismTest (tests) where
 
-import qualified Ch08.Category as C
+import qualified Lib.Category as C
 import Ch12.SetCategory
 import Ch23.RepresentableFunctor
 import Ch23.XCone

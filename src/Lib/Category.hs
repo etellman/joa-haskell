@@ -1,4 +1,4 @@
-module Ch08.Category
+module Lib.Category
   ( Morphism (..),
     Morphisms (..),
     Objects (..),

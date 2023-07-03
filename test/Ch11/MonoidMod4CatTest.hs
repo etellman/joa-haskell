@@ -1,6 +1,6 @@
 module Ch11.MonoidMod4CatTest (unitTests) where
 
-import Ch08.Category
+import Lib.Category
 import Ch11.MonoidCat
 import Ch11.MonoidMod4Cat
 import Hedgehog

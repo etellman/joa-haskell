@@ -1,6 +1,6 @@
 module Ch18.LcmProductTest (tests) where
 
-import Ch08.Category
+import Lib.Category
 import Ch08.Factor30
 import Ch18.LcmProduct
 import Hedgehog
